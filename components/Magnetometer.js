@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Magnetometer,
-} from 'expo';
+import { Magnetometer} from 'expo';
 import {
   StyleSheet,
   Text,
@@ -32,7 +30,7 @@ export default class MagnetometerSensor extends React.Component {
   }
 
   _slow = () => {
-    Magnetometer.setUpdateInterval(10000);
+    Magnetometer.setUpdateInterval(500);
   }
 
   _fast = () => {
@@ -57,9 +55,9 @@ export default class MagnetometerSensor extends React.Component {
     return (
       <View style={styles.sensor}>
         <Text style={styles.text}>Magnetometer:</Text>
-        <Text style={styles.text}>x: {round(x)+77} </Text>
-        <Text style={styles.text}>y: {round(y)+75} </Text>
-        <Text style={styles.text}>z: {round(z)+110} </Text>
+        <Text style={styles.text}>x: {round(x)} </Text>
+        <Text style={styles.text}>y: {round(y)} </Text>
+        <Text style={styles.text}>z: {round(z)} </Text>
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this._toggle} style={styles.button}>

@@ -1,33 +1,51 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import BoxMaker from './components/BoxMaker'
+import { StyleSheet, Text, View, Button} from 'react-native';
+import BoxMaker from './components/BoxMaker';
+import Magnetometer from './components/Magnetometer';
+import { createStackNavigator,} from 'react-navigation';
+import Start from './components/Start';
+import Draw from './components/Draw';
+import navStyles from './styles/navStyles'
+import styles from './styles/basicStyle'
 
-export default class App extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      positions: [{top: 60, left: 60},{top: 60, left: 70},{top: 60, left: 80},{top: 70, left: 80},{top: 80, left: 80}]
-      
-    }
+class App extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+    ...navStyles
+  };
+
+  goToStart = () => {
+    this.props.navigation.navigate('Start');
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hey Carrie!</Text>
-        <BoxMaker
-        positions = {this.state.positions}
-        />
+        <Text style={[styles.text, styles.textBig]}>Welcome to MagneDraw!</Text>
+        <Text style = {styles.text}>Please place your mobile device on a flat surface.</Text>
+        <Text style = {styles.text}>Hold your MagnetPen in the center of your canvas, within 10 inches of your mobile device.</Text>
+        <Text style = {styles.text}>Push the button to calibrate.</Text>
+        <Button
+        onPress ={this.goToStart}
+        title='Calibrate'
+         />
+        
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+// this loads in the order listed
+export default createStackNavigator ({
+Home: {
+  screen: App
+},
+Start: {
+  screen: Start
+},
+Draw: {
+  screen: Draw
+},
+
+})

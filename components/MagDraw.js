@@ -1,17 +1,23 @@
 import React from 'react';
-import {
-  Gyroscope,
-} from 'expo';
+import { Magnetometer} from 'expo';
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from 'react-native';
+import { bold } from 'ansi-colors';
+import Box from './Box'
 
-export default class GyroscopeSensor extends React.Component {
+
+//let { x, y, z} = this.state.MagnetometerData;
+export default class MagnetometerSensor extends React.Component {
   state = {
-    gyroscopeData: {},
+    MagnetometerData: {},
+    positions: {
+      top:50,
+      left:100,
+    },
   }
 
   componentDidMount() {
@@ -30,17 +36,21 @@ export default class GyroscopeSensor extends React.Component {
     }
   }
 
-  _slow = () => {
-    Gyroscope.setUpdateInterval(10000);
-  }
 
   _fast = () => {
-    Gyroscope.setUpdateInterval(16);
+    Magnetometer.setUpdateInterval(1000);
   }
 
+  // change this to add a new record, rather than writing over the last
   _subscribe = () => {
-    this._subscription = Gyroscope.addListener((result) => {
-      this.setState({gyroscopeData: result});
+    this._subscription = Magnetometer.addListener((result) => {
+      this.setState({
+        MagnetometerData: result,
+        positions: {
+          top: -(result.y),
+          left: -(result.z)
+        }
+      }); 
     });
   }
 
@@ -50,25 +60,29 @@ export default class GyroscopeSensor extends React.Component {
   }
 
   render() {
-    let { x, y, z } = this.state.gyroscopeData;
+    let { x, y, z} = this.state.MagnetometerData;
 
     return (
       <View style={styles.sensor}>
-        <Text>Gyroscope:</Text>
-        {/* <Text>x: {round(x)} </Text> */}
-        {/* <Text>y: {round(y)} </Text>  */}
-        <Text>z: {round(z)} </Text> 
+
+        <Box
+          position= {this.state.positions} 
+        /> 
+
+        <Text style={styles.text}>Magnetometer:</Text>
+        <Text style={styles.text}>x: {this.state.y} </Text>
+        <Text style={styles.text}>y: {round(y)} </Text>
+        <Text style={styles.text}>z: {round(z)} </Text>
 
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={this._toggle} style={styles.button}>
             <Text>Toggle</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this._slow} style={[styles.button, styles.middleButton]}>
-            <Text>Slow</Text>
-          </TouchableOpacity>
+          
           <TouchableOpacity onPress={this._fast} style={styles.button}>
             <Text>Fast</Text>
           </TouchableOpacity>
+
         </View>
       </View>
     );
@@ -79,8 +93,7 @@ function round(n) {
   if (!n) {
     return 0;
   }
-
-  return Math.floor(n * 10) ;
+  return Math.floor(n * 1) ;
 }
 
 const styles = StyleSheet.create({
@@ -111,6 +124,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 15,
     paddingHorizontal: 10,
-   
+
   },
+  text: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  }
 });

@@ -1,10 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import navStyles from '../styles/navStyles'
-import styles from '../styles/basicStyle'
-import { FontAwesome } from '@expo/vector-icons'
+import navStyles from '../styles/navStyles';
+import styles from '../styles/basicStyle';
+import { FontAwesome } from '@expo/vector-icons';
+import BoxMaker from './BoxMaker';
+import Magnetometer from './Magnetometer';
+import MagDraw from './MagDraw'
 
 export default class Draw extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+    }
+  }
   static navigationOptions = {
     title: 'Draw',
     ...navStyles
@@ -14,6 +23,11 @@ export default class Draw extends React.Component {
     return (
       <View style={styles.container}>
       <Text>this is the draw page</Text>
+      
+      <MagDraw />
+
+
+
       <FontAwesome 
       name='stop-circle-o'
       size={50}

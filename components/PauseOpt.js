@@ -2,11 +2,8 @@ import React from 'react';
 import {StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import styles from '../styles/basicStyle'
 
-
-
 export default class PauseOpt extends React.Component {
   
-
   render() {
     return (
      <View style={styles.pauseOpt}>

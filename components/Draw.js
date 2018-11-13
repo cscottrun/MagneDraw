@@ -1,14 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import navStyles from '../styles/navStyles';
 import styles from '../styles/basicStyle';
-import { Foundation } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import BoxMaker from './BoxMaker';
-import Magnetometer from './Magnetometer';
 import MagDraw from './MagDraw'
-import PauseOpt from './PauseOpt';
-import Save from './Save';
 
 export default class Draw extends React.Component {
   constructor(props) {
@@ -37,8 +31,7 @@ export default class Draw extends React.Component {
       <MagDraw
         drawing = {this.drawing}
         goToStart = {this.goToStart} />
-
-      
+    
       </View>
     )
   }

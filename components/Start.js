@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import navStyles from '../styles/navStyles'
 import styles from '../styles/basicStyle'
-import { Foundation } from '@expo/vector-icons';
-
 
 export default class Start extends React.Component {
   static navigationOptions = {

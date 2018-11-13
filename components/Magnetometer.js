@@ -1,12 +1,6 @@
 import React from 'react';
 import { Magnetometer} from 'expo';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import { bold } from 'ansi-colors';
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 export default class MagnetometerSensor extends React.Component {
   state = {

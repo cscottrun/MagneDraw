@@ -1,8 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text } from 'react-native';
-
-
-
+import {StyleSheet, View, } from 'react-native';
 
 export default class Box extends React.Component {
   render() {
@@ -13,7 +10,6 @@ export default class Box extends React.Component {
     )
   }
 }
-
 
 const styles = StyleSheet.create({
   box: {

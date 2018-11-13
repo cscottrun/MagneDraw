@@ -22,17 +22,17 @@ class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <Text style={[styles.text, styles.textBig]}>Welcome to MagneDraw!</Text>
         <Text style = {styles.text}>Please place your mobile device on a flat surface.</Text>
         <Text style = {styles.text}>Hold your MagnetPen in the center of your canvas, within 10 inches of your mobile device.</Text>
         <Text style = {styles.text}>Push the button to calibrate.</Text>
+        
         <View style={styles.buttonContainer}>
         <TouchableOpacity style={[styles.button, {width: 40}]} onPress={this.goToStart} >
          <Text>Calibrate</Text>
         </TouchableOpacity>
         </View>
-        
-        
         
       </View>
     );

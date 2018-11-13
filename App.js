@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import BoxMaker from './components/BoxMaker';
 import Magnetometer from './components/Magnetometer';
 import { createStackNavigator,} from 'react-navigation';
@@ -7,6 +7,7 @@ import Start from './components/Start';
 import Draw from './components/Draw';
 import navStyles from './styles/navStyles'
 import styles from './styles/basicStyle'
+import PauseOpt from './components/PauseOpt'
 
 class App extends React.Component {
   static navigationOptions = {
@@ -25,10 +26,13 @@ class App extends React.Component {
         <Text style = {styles.text}>Please place your mobile device on a flat surface.</Text>
         <Text style = {styles.text}>Hold your MagnetPen in the center of your canvas, within 10 inches of your mobile device.</Text>
         <Text style = {styles.text}>Push the button to calibrate.</Text>
-        <Button
-        onPress ={this.goToStart}
-        title='Calibrate'
-         />
+        <View style={styles.buttonContainer}>
+        <TouchableOpacity style={[styles.button, {width: 40}]} onPress={this.goToStart} >
+         <Text>Calibrate</Text>
+        </TouchableOpacity>
+        </View>
+        
+        
         
       </View>
     );

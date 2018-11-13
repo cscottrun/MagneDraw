@@ -6,22 +6,23 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { bold } from 'ansi-colors';
 import Box from './Box'
+import PauseOpt from './PauseOpt';
+import { FontAwesome } from '@expo/vector-icons';
+import BoxMaker from './BoxMaker'
 
 
-//let { x, y, z} = this.state.MagnetometerData;
+
 export default class MagnetometerSensor extends React.Component {
   state = {
+    listening: true,
     MagnetometerData: {},
-    positions: {
-      top:50,
-      left:100,
-    },
+    positions: [],
   }
 
   componentDidMount() {
     this._toggle();
+    Magnetometer.setUpdateInterval(500);
   }
 
   componentWillUnmount() {
@@ -30,26 +31,20 @@ export default class MagnetometerSensor extends React.Component {
 
   _toggle = () => {
     if (this._subscription) {
+      this.setState({listening: false})
       this._unsubscribe();
     } else {
+      this.setState({listening: true})
       this._subscribe();
     }
   }
 
-
-  _fast = () => {
-    Magnetometer.setUpdateInterval(1000);
-  }
-
-  // change this to add a new record, rather than writing over the last
   _subscribe = () => {
     this._subscription = Magnetometer.addListener((result) => {
+      let joined = this.state.positions.concat({top: -(result.y), left: -(result.z)})
       this.setState({
         MagnetometerData: result,
-        positions: {
-          top: -(result.y),
-          left: -(result.z)
-        }
+        positions: joined
       }); 
     });
   }
@@ -65,25 +60,31 @@ export default class MagnetometerSensor extends React.Component {
     return (
       <View style={styles.sensor}>
 
-        <Box
-          position= {this.state.positions} 
+        <BoxMaker
+          positions= {this.state.positions} 
         /> 
 
-        <Text style={styles.text}>Magnetometer:</Text>
-        <Text style={styles.text}>x: {this.state.y} </Text>
+        <Text style={styles.text}>{this.state.positions.length}</Text>
+        <Text style={styles.text}>x: {round(x)} </Text>
         <Text style={styles.text}>y: {round(y)} </Text>
         <Text style={styles.text}>z: {round(z)} </Text>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={this._toggle} style={styles.button}>
-            <Text>Toggle</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity onPress={this._fast} style={styles.button}>
-            <Text>Fast</Text>
-          </TouchableOpacity>
 
-        </View>
+        
+
+          <FontAwesome 
+            name='pause-circle-o'
+            size={40}
+            color='black'
+            style={styles.bottomCenter}
+            onPress= {this._toggle}
+          />
+          {!this.state.listening? 
+          <PauseOpt
+            handleToggle = {this._toggle}
+          /> : null}
+          
+        
       </View>
     );
   }

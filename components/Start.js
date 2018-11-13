@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import navStyles from '../styles/navStyles'
 import styles from '../styles/basicStyle'
-import { Ionicons } from '@expo/vector-icons'
-import Draw from './Draw';
-import { createStackNavigator,} from 'react-navigation';
+import { Foundation } from '@expo/vector-icons';
 
 
 export default class Start extends React.Component {
@@ -20,13 +18,13 @@ export default class Start extends React.Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Text style={styles.text}>You are ready to Draw. Press start to begin.</Text>
-        <Ionicons
-          name = 'ios-play-circle'
-          color = '#7E5BFF'
-          size={50}
-          onPress={this.goToDraw}
-           />
+        <Text style={styles.text}>Press to begin.</Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity  style={[styles.button, {backgroundColor:'#52FFC6'}]} 
+              onPress={this.goToDraw}>
+            <Text>Draw</Text>
+            </TouchableOpacity>
+          </View>
       </View>
     )
   }

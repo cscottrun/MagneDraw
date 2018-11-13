@@ -18,7 +18,7 @@ export default class Start extends React.Component {
   render() {
     return (
       <View style = {styles.container}>
-        <Text style={styles.text}>Press to begin.</Text>
+        <Text style={styles.text}>Press to begin</Text>
           <View style={styles.buttonContainer}>
             <TouchableOpacity  style={[styles.button, {backgroundColor:'#52FFC6'}]} 
               onPress={this.goToDraw}>

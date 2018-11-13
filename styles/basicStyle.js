@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
   bottomCenter: {
     position: 'absolute',
-    top: 525,
+    top: 500,
   },
   buttonContainer: {
     flexDirection: 'row',

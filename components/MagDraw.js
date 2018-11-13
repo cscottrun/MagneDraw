@@ -10,6 +10,8 @@ import Box from './Box'
 import PauseOpt from './PauseOpt';
 import { FontAwesome } from '@expo/vector-icons';
 import BoxMaker from './BoxMaker'
+import styles from '../styles/basicStyle';
+
 
 
 
@@ -20,9 +22,11 @@ export default class MagnetometerSensor extends React.Component {
     positions: [],
   }
 
+  
+
   componentDidMount() {
     this._toggle();
-    Magnetometer.setUpdateInterval(500);
+    Magnetometer.setUpdateInterval(40);
   }
 
   componentWillUnmount() {
@@ -41,7 +45,7 @@ export default class MagnetometerSensor extends React.Component {
 
   _subscribe = () => {
     this._subscription = Magnetometer.addListener((result) => {
-      let joined = this.state.positions.concat({top: -(result.y), left: -(result.z)})
+      let joined = this.state.positions.concat({top: -(result.y * 7), left: -(result.z * 3.10)})
       this.setState({
         MagnetometerData: result,
         positions: joined
@@ -58,33 +62,26 @@ export default class MagnetometerSensor extends React.Component {
     let { x, y, z} = this.state.MagnetometerData;
 
     return (
-      <View style={styles.sensor}>
+      <View style={styles.container}>
 
         <BoxMaker
           positions= {this.state.positions} 
         /> 
 
-        <Text style={styles.text}>{this.state.positions.length}</Text>
-        <Text style={styles.text}>x: {round(x)} </Text>
-        <Text style={styles.text}>y: {round(y)} </Text>
-        <Text style={styles.text}>z: {round(z)} </Text>
+        <FontAwesome 
+          name='pause-circle-o'
+          size={40}
+          color='black'
+          style={styles.bottomCenter}
+          onPress= {this._toggle}
+        />
 
-
-        
-
-          <FontAwesome 
-            name='pause-circle-o'
-            size={40}
-            color='black'
-            style={styles.bottomCenter}
-            onPress= {this._toggle}
-          />
-          {!this.state.listening? 
-          <PauseOpt
-            handleToggle = {this._toggle}
-          /> : null}
-          
-        
+        {!this.state.listening? 
+        <PauseOpt
+          handleToggle = {this._toggle}
+          goToStart = {this.props.goToStart}
+        /> : null}
+              
       </View>
     );
   }
@@ -97,38 +94,38 @@ function round(n) {
   return Math.floor(n * 1) ;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    marginTop: 15,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#eee',
-    padding: 10,
-  },
-  middleButton: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: '#ccc',
-  },
-  sensor: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 15,
-    paddingHorizontal: 10,
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1
+//   },
+//   buttonContainer: {
+//     flexDirection: 'row',
+//     alignItems: 'stretch',
+//     marginTop: 15,
+//   },
+//   button: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#eee',
+//     padding: 10,
+//   },
+//   middleButton: {
+//     borderLeftWidth: 1,
+//     borderRightWidth: 1,
+//     borderColor: '#ccc',
+//   },
+//   sensor: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     marginTop: 15,
+//     paddingHorizontal: 10,
 
-  },
-  text: {
-    fontSize: 30,
-    fontWeight: 'bold',
-  }
-});
+//   },
+//   text: {
+//     fontSize: 30,
+//     fontWeight: 'bold',
+//   }
+// });

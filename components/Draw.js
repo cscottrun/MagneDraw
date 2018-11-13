@@ -17,6 +17,10 @@ export default class Draw extends React.Component {
       drawing: true,
     }
   }
+  goToStart = () => {
+    this.props.navigation.navigate('Start');
+  }
+
   static navigationOptions = {
     title: 'Draw',
     ...navStyles
@@ -29,10 +33,10 @@ export default class Draw extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text>this is the draw page</Text>
     
       <MagDraw
-        drawing = {this.drawing} />
+        drawing = {this.drawing}
+        goToStart = {this.goToStart} />
 
       
       </View>

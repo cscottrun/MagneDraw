@@ -5,6 +5,8 @@ import styles from '../styles/basicStyle'
 
 
 export default class PauseOpt extends React.Component {
+  
+
   render() {
     return (
      <View style={styles.pauseOpt}>
@@ -17,7 +19,8 @@ export default class PauseOpt extends React.Component {
          <Text>Continue Draw</Text>
        </TouchableOpacity>
 
-       <TouchableOpacity style={[styles.pauseBtns, {backgroundColor: '#52FFC6'}]}>
+       <TouchableOpacity style={[styles.pauseBtns, {backgroundColor: '#52FFC6'}]}
+        onPress = {this.props.goToStart}>
          <Text>Reset</Text>
        </TouchableOpacity>
 

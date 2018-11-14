@@ -48,10 +48,10 @@ export default class MagnetometerSensor extends React.Component {
   }
 
   sendPost = () => {
-    fetch('http://192.168.31.27:3000/',{
+    fetch('http://127.0.0.1:3000/',{
       method: 'POST',
       body: JSON.stringify({
-        a: 'hey Carrie- you are cool'
+        positions: this.state.positions
       }),
       headers: {"Content-Type": "application/json"}
     })

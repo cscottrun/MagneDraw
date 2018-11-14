@@ -24,21 +24,6 @@ class App extends React.Component {
     this.props.navigation.navigate('Start');
   }
 
-  sendPost = () => {
-    fetch('http://192.168.31.27:3000/',{
-      method: 'POST',
-      body: JSON.stringify({
-        a: 'hello'
-      }),
-      headers: {"Content-Type": "application/json"}
-    })
-    .then(function(response){
-    return response
-    })
-    .catch(error => console.log(error));
-  }
-
-
   render() {
     return (
       <View style={styles.container}>
@@ -51,7 +36,7 @@ class App extends React.Component {
         <View style={styles.buttonContainer}>
         <TouchableOpacity 
           style={[styles.button, {width: 40}]} 
-          onPress={this.sendPost} >
+          onPress={this.goToStart} >
          <Text>Calibrate</Text>
         </TouchableOpacity>
         </View>

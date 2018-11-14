@@ -21,6 +21,7 @@ res.render('index')
 app.post('/', function (req, res) {
   post = req.body;
   console.log(post.a);
+  res.send(post);
   res.render('index', {post:post})
 });
 

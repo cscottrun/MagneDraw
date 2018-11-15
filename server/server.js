@@ -20,7 +20,6 @@ res.render('index')
 
 app.post('/', function (req, res) {
   positions = req.body.positions;
-  
   res.render('index', {positions:positions})
 });
 

@@ -15,6 +15,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  canvas: {
+    flex: 1,
+  },
   text: {
     padding: 5,
   },

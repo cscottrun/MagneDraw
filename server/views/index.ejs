@@ -20,6 +20,8 @@
     margin: auto;
     margin-bottom: 20px;
   ">Your MagneDraw Masterpiece</h1>
+
+    
 <div style="
 
   margin: auto;
@@ -57,7 +59,7 @@
     grid-area: 1/180/500/360;
     ">
 
-      <% positions.forEach(position => { %> 
+      <% positions.forEach(position => { if(position.top < 500 && position.left < 181 ) { %> 
         <div 
         style= "
           position: absolute;
@@ -69,7 +71,7 @@
           border-radius: 50%;
           "
           ></div>   
-      <% })%> 
+      <% }})%> 
     </div>
     
 

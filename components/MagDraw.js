@@ -46,6 +46,20 @@ export default class MagnetometerSensor extends React.Component {
     this._subscription && this._subscription.remove();
     this._subscription = null;
   }
+
+  sendPost = () => {
+    fetch('http://127.0.0.1:3000/',{
+      method: 'POST',
+      body: JSON.stringify({
+        positions: this.state.positions
+      }),
+      headers: {"Content-Type": "application/json"}
+    })
+    .then(function(response){
+    return response
+    })
+    .catch(error => console.log(error));
+  }
   
   render() {
     let { x, y, z} = this.state.MagnetometerData;
@@ -69,6 +83,7 @@ export default class MagnetometerSensor extends React.Component {
         <PauseOpt
           handleToggle = {this._toggle}
           goToStart = {this.props.goToStart}
+          sendPost = {this.sendPost}
         /> : null}
               
       </View>

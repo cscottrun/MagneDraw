@@ -5,9 +5,16 @@ keep array of coordinates that have been touched, until state is cleared.
 
 instead of keeping track of coordinate points, I only need to know the difference from the starting position
 
-colors:
-  purple: #7E5BFF
-  dark purlpleblue: #4B66E8
-  light blue: #5FB7FF
-  lighter blue: #4BDDE8
-  seafoam: #52FFC6
+++++++++++++++++++++++++
+socket.io
++++++++++++++++++++
+npm install socket.io-client --save
+put window.navigator.userAgent = 'react-native' in App
+import io from  'socket.io-client/socket.io'  < --- look out because it may be in dist          'socket.io-client/dist/socket.io'
+
+in your constructor assign this.socket = io('localhost:3001', {jsonp: false});
+
+Create SErver file
+  app.js
+    get the starter code for express https://socket.io/docs (break out express into 2 diff variables)
+  index.html

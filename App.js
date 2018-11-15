@@ -9,7 +9,12 @@ import navStyles from './styles/navStyles'
 import styles from './styles/basicStyle'
 import PauseOpt from './components/PauseOpt'
 
+
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   static navigationOptions = {
     title: 'Home',
     ...navStyles
@@ -27,9 +32,11 @@ class App extends React.Component {
         <Text style = {styles.text}>Please place your mobile device on a flat surface.</Text>
         <Text style = {styles.text}>Hold your MagnetPen in the center of your canvas, within 10 inches of your mobile device.</Text>
         <Text style = {styles.text}>Push the button to calibrate.</Text>
-        
+
         <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.button, {width: 40}]} onPress={this.goToStart} >
+        <TouchableOpacity 
+          style={[styles.button, {width: 40}]} 
+          onPress={this.goToStart} >
          <Text>Calibrate</Text>
         </TouchableOpacity>
         </View>

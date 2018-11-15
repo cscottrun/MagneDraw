@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body style="
+    background-image: url('https://previews.123rf.com/images/ensup/ensup1408/ensup140800174/31127960-graffiti-wall-background.jpg');
+    display: block;
+    justify-content: center;
+    padding: auto;
+    padding-top: none;
+  ">
+  
+  <div
+    class='container'
+    style=" 
+    padding-top: 0;
+    background-color:rgb(245, 245, 245, .8);
+    width: 60%;
+    height: 850px;
+    margin:auto;
+    margin-top: 0; "
+  >
+
+  <h1 style="
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding: 10px;
+  ">Your MagneDraw Masterpiece</h1>
+  
+  <div
+  style=" 
+    justify-content: center;
+    padding: auto;
+    text-align: center;
+    margin: auto;
+    background-color:#7E5BFF;
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
+    cursor: pointer;"
+  onclick= "function reset(){
+    let boxes = document.getElementsByClassName('box');
+    let canvas = document.getElementsByClassName('canvas')[0];
+    while (canvas.firstChild) {
+      canvas.removeChild(canvas.firstChild)
+    }
+    };reset()"
+  >reset</div>
+
+<div 
+  class= 'frame'
+  style="
+  margin: auto;
+  padding:8vmin;
+  height: 700px;
+  width: 600px;
+  background-color:#ddc;
+  border:solid 5vmin #eee;
+  border-bottom-color:rgb(247, 211, 9);
+  border-left-color:rgb(209, 178, 3);
+  border-radius:2px;
+  border-right-color:rgb(209, 178, 3);
+  border-top-color:rgb(185, 152, 3);
+  box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+  box-sizing:border-box;
+  text-align:center;
+  ">
+
+    <div style="
+      background-color: white;
+      border: solid;
+      border-color: lightgrey;
+      height: 500px;
+      width: 360px;
+      padding: auto;
+      margin: auto;
+      display: grid;
+      grid-template-rows: 100%;
+      grid-template-columns: repeat(2, 1fr); 
+    ">
+
+    <div 
+    class='canvas'
+    style=" 
+    width: 180px;
+    height: 500px;
+    grid-area: 1/2/2/3;
+    ">
+    
+      <% positions.forEach(position => { if(position.top < 500 && position.top > 0 && position.left < 181 ) { %> 
+        <div
+        class= box 
+        style= "
+          position: absolute;
+          margin-left: <%= position.left %>px;
+          margin-top:  <%= position.top %>px;
+          background-color: #7E5BFF;
+          height: 8px;
+          width: 8px;
+          border-radius: 50%;
+          "
+          ></div>   
+      <% }}) %> 
+    </div>
+
+  </div>
+
+  </div>
+</div>
+</body>
+</html>

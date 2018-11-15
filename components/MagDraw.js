@@ -6,13 +6,14 @@ import { FontAwesome } from '@expo/vector-icons';
 import BoxMaker from './BoxMaker'
 import styles from '../styles/basicStyle';
 
+const ipAdd = '10.8.82.39';
+
 export default class MagnetometerSensor extends React.Component {
   state = {
     listening: true,
     MagnetometerData: {},
-    positions: [],
+    positions: []
   }
-  
   componentDidMount() {
     this._toggle();
     Magnetometer.setUpdateInterval(40);
@@ -48,7 +49,7 @@ export default class MagnetometerSensor extends React.Component {
   }
 
   sendPost = () => {
-    fetch('http://127.0.0.1:3000/',{
+    fetch(`http://${ipAdd}:3000/`,{
       method: 'POST',
       body: JSON.stringify({
         positions: this.state.positions
@@ -60,13 +61,20 @@ export default class MagnetometerSensor extends React.Component {
     })
     .catch(error => console.log(error));
   }
+  resetDrawing = () => {
+    this.setState({
+      positions: []
+    }); 
+    this.sendPost;
+    this.props.goToStart();
+  }
   
   render() {
     let { x, y, z} = this.state.MagnetometerData;
     
     return (
       <View style={styles.container}>
-
+        {/* <Text> x: {round(x)}  y: {round(y)}  z{ round(z)} </Text> */}
         <BoxMaker
           positions= {this.state.positions} 
         /> 
@@ -84,6 +92,7 @@ export default class MagnetometerSensor extends React.Component {
           handleToggle = {this._toggle}
           goToStart = {this.props.goToStart}
           sendPost = {this.sendPost}
+          resetDrawing = {this.resetDrawing}
         /> : null}
               
       </View>

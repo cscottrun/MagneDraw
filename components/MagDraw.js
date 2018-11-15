@@ -12,8 +12,7 @@ export default class MagnetometerSensor extends React.Component {
   state = {
     listening: true,
     MagnetometerData: {},
-    positions: [{top: 1, left: 1}, {top: 1, left: -180}, {top: 1, left: 180}, 
-      {top: 500, left: -1}, {top: 500, left: -180}, {top: 500, left: 180}]
+    positions: []
   }
   componentDidMount() {
     this._toggle();
@@ -62,6 +61,13 @@ export default class MagnetometerSensor extends React.Component {
     })
     .catch(error => console.log(error));
   }
+  resetDrawing = () => {
+    this.setState({
+      positions: []
+    }); 
+    this.sendPost;
+    this.props.goToStart();
+  }
   
   render() {
     let { x, y, z} = this.state.MagnetometerData;
@@ -86,6 +92,7 @@ export default class MagnetometerSensor extends React.Component {
           handleToggle = {this._toggle}
           goToStart = {this.props.goToStart}
           sendPost = {this.sendPost}
+          resetDrawing = {this.resetDrawing}
         /> : null}
               
       </View>

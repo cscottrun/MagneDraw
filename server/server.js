@@ -14,14 +14,16 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+positions = []
 app.get('/', (req,res) => {
-res.render('index')
+res.render('drawing', {positions: positions})
 })
 
 app.post('/', function (req, res) {
   positions = req.body.positions;
-  res.render('index', {positions:positions})
+  res.render('drawing', {positions:positions});
 });
+
 
 
 

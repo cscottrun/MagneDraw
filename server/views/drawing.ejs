@@ -20,21 +20,32 @@
     margin: auto;
     margin-bottom: 20px;
   ">Your MagneDraw Masterpiece</h1>
+  
+  <button
+  onclick= "function reset(){
+    let boxes = document.getElementsByClassName('box');
+    let canvas = document.getElementsByClassName('canvas')[0];
+    while (canvas.firstChild) {
+      canvas.removeChild(canvas.firstChild)
+    }
+  };reset()"
+  >reset</button>
 
-    
-<div style="
 
+<div 
+  class= 'frame'
+  style="
   margin: auto;
   padding:8vmin;
   height: 700px;
   width: 600px;
   background-color:#ddc;
   border:solid 5vmin #eee;
-  border-bottom-color:#fff;
-  border-left-color:#eee;
+  border-bottom-color:rgb(247, 211, 9);
+  border-left-color:rgb(209, 178, 3);
   border-radius:2px;
-  border-right-color:#eee;
-  border-top-color:#ddd;
+  border-right-color:rgb(209, 178, 3);
+  border-top-color:rgb(185, 152, 3);
   box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
   box-sizing:border-box;
   text-align:center;
@@ -49,18 +60,20 @@
       padding: auto;
       margin: auto;
       display: grid;
-      grid-template-rows: repeat(500, 1fr);
-      grid-template-columns: repeat(360, 1fr); 
+      grid-template-rows: 100%;
+      grid-template-columns: repeat(2, 1fr); 
     ">
-    <div style=" 
-    background-color: paleturquoise;
+    <div 
+    class='canvas'
+    style=" 
     width: 180px;
     height: 500px;
-    grid-area: 1/180/500/360;
+    grid-area: 1/2/2/3;
     ">
-
-      <% positions.forEach(position => { if(position.top < 500 && position.left < 181 ) { %> 
-        <div 
+    
+      <% positions.forEach(position => { if(position.top < 500 && position.top > 0 && position.left < 181 ) { %> 
+        <div
+        class= box 
         style= "
           position: absolute;
           margin-left: <%= position.left %>px;
@@ -71,7 +84,7 @@
           border-radius: 50%;
           "
           ></div>   
-      <% }})%> 
+      <% }}) %> 
     </div>
     
 

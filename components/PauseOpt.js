@@ -19,7 +19,7 @@ export default class PauseOpt extends React.Component {
        </TouchableOpacity>
 
        <TouchableOpacity style={[styles.pauseBtns, {backgroundColor: '#52FFC6'}]}
-        onPress = {this.props.goToStart}>
+        onPress = {this.props.resetDrawing}>
          <Text>Reset</Text>
        </TouchableOpacity>
 

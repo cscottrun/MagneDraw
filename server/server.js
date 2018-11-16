@@ -25,12 +25,4 @@ app.post('/', function (req, res) {
 });
 
 
-
-
-
-
-
 app.listen(port, () => console.log(`Carries app listening on port ${port}!`))
-
-
-

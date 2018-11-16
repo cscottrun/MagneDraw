@@ -1,12 +1,12 @@
 import React from 'react';
 import { Magnetometer} from 'expo';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import PauseOpt from './PauseOpt';
 import { FontAwesome } from '@expo/vector-icons';
 import BoxMaker from './BoxMaker'
 import styles from '../styles/basicStyle';
 
-const ipAdd = '10.8.82.39';
+const ipAdd = '127.0.0.1';
 
 export default class MagnetometerSensor extends React.Component {
   state = {
@@ -74,7 +74,6 @@ export default class MagnetometerSensor extends React.Component {
     
     return (
       <View style={styles.container}>
-        {/* <Text> x: {round(x)}  y: {round(y)}  z{ round(z)} </Text> */}
         <BoxMaker
           positions= {this.state.positions} 
         /> 

@@ -4,7 +4,6 @@ MagneDraw is a mobile app used to create technical and non-technical drawings us
 
 Using the built-in magnetic sensors of your smart-phone, MagneDraw picks up on your magnetic marker and renders your drawing accordingly. Once your drawing is complete, cast it to your favorite website, friend, or google drive.
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
 ## Setting up this app
  * Make sure you have Expo Client app on your Iphone or Android device
  * Fork and clone this repo

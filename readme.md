@@ -1,14 +1,19 @@
 # MagneDraw
 
-MagneDraw is a mobile app used to create technical and non-technical drawing using a magnet. Instead of taking a photo of your whiteboard drawing, simply draw with a magnetic marker and see your creation digitized in real time.
+MagneDraw is a mobile app used to create technical and non-technical drawings using a magnet. Instead of taking a photo of your whiteboard drawing, simply draw with a magnetic marker and see your creation digitized in real time.
 
-Using the built-in magnetic sensors of your smart-phone, MagneDraw picks up on your magnetic marker and renders your drawing accordingly. Once you are finished, cast your drawing to your favorite website, friend, or google drive page.
+Using the built-in magnetic sensors of your smart-phone, MagneDraw picks up on your magnetic marker and renders your drawing accordingly. Once your drawing is complete, cast it to your favorite website, friend, or google drive.
 
 ![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
-## Getting Started
-
-Fork and clone this repo. ```npm install``` your dependencies. In terminal, ```expo start``` to launch your mobile server. Install the Expo Client on your mobile device. One Expo server is running, send project to your mobile number (note that qr code scanning is no longer a working feature). You can open the project by following the link Expo sends in text. 
-To utilize the web-casting feature, in a new terminal cd into ‘server’ directory. ```node (or nodemon) server.js```.
+## Setting up this app
+ * Make sure you have Expo Client app on your Iphone or Android device
+ * Fork and clone this repo
+ * `cd MagneDraw`
+ * `npm install`
+ * `expo start` to launch the expo client. A web tab will open up where you can email or text the link to your device
+ * in new terminal `npm start` to launch server - open webpage to localhost:3000
+ 
+ Once app is running on your mobile device you can follow the prompts to create drawings using a magnet, magnetized pen, or just magnetic north. Follow the propts to cast your drawing to localhost:3000.
 
 ### Prerequisites
 
@@ -19,12 +24,7 @@ MagneDraw only works with smartphones contain magnetic sensor. If your phone has
 
 Any magnet will result in rendering a drawing to the screen, even the Earth’s own magnetic North! Get creative, try attaching a magnet to a whiteboard marker and drawing as usual. Try waving your phone in the air towards North. We’d love to see your creations - just send to @MagneDraw on instagram!
 
-
-## Built With
-
-* Create React Native App (Expo)
-
-## Technologies include
+## Technologies 
 * React Native
 * node.js
 * ejs

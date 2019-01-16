@@ -3,13 +3,14 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "expo": "^31.0.4",
     "express": "^4.16.4",

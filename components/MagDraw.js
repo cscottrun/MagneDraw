@@ -6,8 +6,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import BoxMaker from './BoxMaker'
 import styles from '../styles/basicStyle';
 
-const ipAdd = '127.0.0.1';
-
 export default class MagnetometerSensor extends React.Component {
   state = {
     listening: true,
@@ -46,21 +44,23 @@ export default class MagnetometerSensor extends React.Component {
   _unsubscribe = () => {
     this._subscription && this._subscription.remove();
     this._subscription = null;
-  }
+  } 
 
   sendPost = () => {
-    fetch(`http://${ipAdd}:3000/`,{
+    fetch('http://localhost:3000/',{
       method: 'POST',
       body: JSON.stringify({
         positions: this.state.positions
       }),
-      headers: {"Content-Type": "application/json"}
+      headers: {
+        "Content-Type": "application/json"}
     })
     .then(function(response){
     return response
     })
     .catch(error => console.log(error));
   }
+  
   resetDrawing = () => {
     this.setState({
       positions: []
@@ -74,6 +74,7 @@ export default class MagnetometerSensor extends React.Component {
     
     return (
       <View style={styles.container}>
+        {/* <Text> x: {round(x)} y: {round(y)} z: {round(z)} </Text> */}
         <BoxMaker
           positions= {this.state.positions} 
         /> 
